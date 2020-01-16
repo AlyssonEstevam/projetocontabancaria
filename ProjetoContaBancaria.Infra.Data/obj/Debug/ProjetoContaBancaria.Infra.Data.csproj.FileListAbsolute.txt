@@ -1,0 +1,9 @@
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Infra.Data\bin\Debug\ProjetoContaBancaria.Infra.Data.dll
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Infra.Data\bin\Debug\ProjetoContaBancaria.Infra.Data.pdb
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Infra.Data\bin\Debug\ProjetoContaBancaria.Domain.dll
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Infra.Data\bin\Debug\ProjetoContaBancaria.Domain.pdb
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Infra.Data\obj\Debug\ProjetoContaBancaria.Infra.Data.csprojAssemblyReference.cache
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Infra.Data\obj\Debug\ProjetoContaBancaria.Infra.Data.csproj.CoreCompileInputs.cache
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Infra.Data\obj\Debug\ProjetoContaBancaria.Infra.Data.csproj.CopyComplete
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Infra.Data\obj\Debug\ProjetoContaBancaria.Infra.Data.dll
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Infra.Data\obj\Debug\ProjetoContaBancaria.Infra.Data.pdb
