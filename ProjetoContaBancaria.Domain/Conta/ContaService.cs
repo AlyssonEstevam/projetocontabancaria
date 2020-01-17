@@ -18,24 +18,24 @@ namespace ProjetoContaBancaria.Domain.Conta
             _repository.Post(conta);
         }
 
-        public IEnumerable<ContaDto> Get()
-        {
-            return _repository.Get();
-        }
-
-        public ContaDto GetById(string id)
-        {
-            return _repository.GetById(id);
-        }
-
         public void Put(ContaDto conta)
         {
             _repository.Put(conta);
         }
 
-        public void Delete(string id)
+        public void Deposito(decimal Num_NumeroConta, decimal Vlr_Valor)
         {
-            _repository.Delete(id);
+            _repository.Deposito(Num_NumeroConta, Vlr_Valor);
+        }
+
+        public void Saque(decimal Num_NumeroConta, decimal Vlr_Valor)
+        {
+            _repository.Saque(Num_NumeroConta, Vlr_Valor);
+        }
+
+        public void Transferencia(decimal Num_NumeroContaT, decimal Num_NumeroContaR, decimal Vlr_Valor)
+        {
+            _repository.Transferencia(Num_NumeroContaT, Num_NumeroContaR, Vlr_Valor);
         }
     }
 }

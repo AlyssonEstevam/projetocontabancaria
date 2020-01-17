@@ -18,7 +18,10 @@ namespace ProjetoContaBancaria.Infra.Data
             SelConta,
             SelPorIdConta,
             DelConta,
-            UpdConta
+            UpdConta,
+            UpdDeposito,
+            UpdSaque,
+            UpdTransferencia
         }
 
         public void Post(ContaDto conta)
@@ -29,7 +32,6 @@ namespace ProjetoContaBancaria.Infra.Data
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Num_NumeroConta", conta.Num_NumeroConta);
                 cmd.Parameters.AddWithValue("@Vlr_Saldo", conta.Vlr_Saldo);
-                cmd.Parameters.AddWithValue("@Dat_DataAbertura", conta.Dat_DataAbertura);
                 cmd.Parameters.AddWithValue("@Ind_ContaAtiva", conta.Ind_ContaAtiva);
                 cmd.ExecuteNonQuery();
             }
@@ -102,9 +104,41 @@ namespace ProjetoContaBancaria.Infra.Data
             }
         }
 
-        public void Dispose()
+        public void Deposito(decimal Num_NumeroConta, decimal Vlr_Valor)
         {
-            throw new NotImplementedException();
+            using (contexto = new Contexto())
+            {
+                SqlCommand cmd = new SqlCommand(Procedures.UpdDeposito.ToString(), contexto.conexaoBD);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Num_NumeroConta", Num_NumeroConta);
+                cmd.Parameters.AddWithValue("@Vlr_ValorDeposito", Vlr_Valor);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void Saque(decimal Num_NumeroConta, decimal Vlr_Valor)
+        {
+            using (contexto = new Contexto())
+            {
+                SqlCommand cmd = new SqlCommand(Procedures.UpdSaque.ToString(), contexto.conexaoBD);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Num_NumeroConta", Num_NumeroConta);
+                cmd.Parameters.AddWithValue("@Vlr_ValorSaque", Vlr_Valor);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void Transferencia(decimal Num_NumeroContaT, decimal Num_NumeroContaR, decimal Vlr_Valor)
+        {
+            using (contexto = new Contexto())
+            {
+                SqlCommand cmd = new SqlCommand(Procedures.UpdTransferencia.ToString(), contexto.conexaoBD);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Num_NumeroContaTransferindo", Num_NumeroContaT);
+                cmd.Parameters.AddWithValue("@Num_NumeroContaRecebendo", Num_NumeroContaR);
+                cmd.Parameters.AddWithValue("@Vlr_ValorTransferencia", Vlr_Valor);
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }

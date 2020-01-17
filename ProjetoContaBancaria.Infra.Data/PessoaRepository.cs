@@ -110,10 +110,5 @@ namespace ProjetoContaBancaria.Infra.Data
                 cmd.ExecuteNonQuery();
             }
         }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

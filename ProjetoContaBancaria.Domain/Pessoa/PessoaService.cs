@@ -18,24 +18,9 @@ namespace ProjetoContaBancaria.Domain.Pessoa
             _repository.Post(pessoa);
         }
 
-        public IEnumerable<PessoaDto> Get()
-        {
-            return _repository.Get();
-        }
-
-        public PessoaDto GetById(string id)
-        {
-            return _repository.GetById(id);
-        }
-
         public void Put(PessoaDto pessoa)
         {
             _repository.Put(pessoa);
-        }
-
-        public void Delete(string id)
-        {
-            _repository.Delete(id);
         }
     }
 }

@@ -44,5 +44,30 @@ namespace ProjetoContaBancaria.Api.Controllers
             _contaRepository.Delete(id);
             return Ok();
         }
+
+        [HttpPut, Route("api/Conta/Deposito")]
+        public IHttpActionResult Deposito(decimal Num_NumeroConta, decimal Vlr_Valor)
+        {
+            //Implementar Notification
+            _contaService.Deposito(Num_NumeroConta, Vlr_Valor);
+            return Ok();
+        }
+
+        [HttpPut, Route("api/Conta/Saque")]
+        public IHttpActionResult Saque(decimal Num_NumeroConta, decimal Vlr_Valor)
+        {
+            //Implementar Notification
+            _contaService.Saque(Num_NumeroConta, Vlr_Valor);
+            return Ok();
+        }
+
+        [HttpPut, Route("api/Conta/Transferencia")]
+        public IHttpActionResult Transferencia(decimal Num_NumeroContaT, decimal Num_NumeroContaR,
+            decimal Vlr_Valor)
+        {
+            //Implementar Notification
+            _contaService.Transferencia(Num_NumeroContaT, Num_NumeroContaR, Vlr_Valor);
+            return Ok();
+        }
     }
 }
