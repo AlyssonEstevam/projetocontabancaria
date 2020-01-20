@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoContaBancaria.Infra.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoContaBancaria.Api", "ProjetoContaBancaria.Api\ProjetoContaBancaria.Api.csproj", "{E5310185-3A2C-4CC1-A582-9E6DAF3D6609}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoContaBancaria.Application", "ProjetoContaBancaria.Application\ProjetoContaBancaria.Application.csproj", "{363123E7-C896-4E75-BCD3-7544872C5725}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{E5310185-3A2C-4CC1-A582-9E6DAF3D6609}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5310185-3A2C-4CC1-A582-9E6DAF3D6609}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5310185-3A2C-4CC1-A582-9E6DAF3D6609}.Release|Any CPU.Build.0 = Release|Any CPU
+		{363123E7-C896-4E75-BCD3-7544872C5725}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{363123E7-C896-4E75-BCD3-7544872C5725}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{363123E7-C896-4E75-BCD3-7544872C5725}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{363123E7-C896-4E75-BCD3-7544872C5725}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{40348438-2BC6-42AF-B7A9-044B20302B7C} = {B74CBC86-C75E-4F43-9D35-24261CAB7C66}
 		{90AF01E2-DB9F-4DAE-8098-00FCE7921A55} = {B74CBC86-C75E-4F43-9D35-24261CAB7C66}
 		{E5310185-3A2C-4CC1-A582-9E6DAF3D6609} = {B74CBC86-C75E-4F43-9D35-24261CAB7C66}
+		{363123E7-C896-4E75-BCD3-7544872C5725} = {A1372927-AA2B-4AB5-A95E-8314EB47B4BE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E3D5314C-A7A9-4C78-9484-C1306634A430}

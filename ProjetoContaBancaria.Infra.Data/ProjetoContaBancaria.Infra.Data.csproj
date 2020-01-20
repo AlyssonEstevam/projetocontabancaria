@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="ContaRepository.cs" />
     <Compile Include="Contexto.cs" />
+    <Compile Include="OperacaoRepository.cs" />
     <Compile Include="PessoaRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

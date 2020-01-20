@@ -1,6 +1,8 @@
-﻿using ProjetoContaBancaria.Domain.Pessoa;
+﻿using System.Net;
+using ProjetoContaBancaria.Domain.Pessoa;
 using ProjetoContaBancaria.Domain.Pessoa.Dto;
 using System.Web.Http;
+using ProjetoContaBancaria.Domain.Notification;
 
 namespace ProjetoContaBancaria.Api.Controllers
 {
@@ -8,11 +10,13 @@ namespace ProjetoContaBancaria.Api.Controllers
     {
         private readonly IPessoaRepository _pessoaRepository;
         private readonly IPessoaService _pessoaService;
+        private readonly NotificationContext _notification;
 
-        public PessoaController(IPessoaRepository pessoaRepository, IPessoaService pessoaService)
+        public PessoaController(IPessoaRepository pessoaRepository, IPessoaService pessoaService, NotificationContext notification)
         {
             _pessoaRepository = pessoaRepository;
             _pessoaService = pessoaService;
+            _notification = notification;
         }
 
         public IHttpActionResult Get()
@@ -27,15 +31,19 @@ namespace ProjetoContaBancaria.Api.Controllers
 
         public IHttpActionResult Post(PessoaDto pessoa)
         {
-            //Implementar Notification
             _pessoaService.Post(pessoa);
+            if (_notification.HasNotifications)
+                return Content(HttpStatusCode.BadRequest, _notification.Get);
+
             return Ok();
         }
 
         public IHttpActionResult Put(PessoaDto pessoa)
         {
-            //Implementar Notification
             _pessoaService.Put(pessoa);
+            if (_notification.HasNotifications)
+                return Content(HttpStatusCode.BadRequest, _notification.Get);
+
             return Ok();
         }
 

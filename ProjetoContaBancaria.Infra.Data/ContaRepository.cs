@@ -104,7 +104,7 @@ namespace ProjetoContaBancaria.Infra.Data
             }
         }
 
-        public void Deposito(decimal Num_NumeroConta, decimal Vlr_Valor)
+        public int Deposito(decimal Num_NumeroConta, decimal Vlr_Valor)
         {
             using (contexto = new Contexto())
             {
@@ -112,11 +112,14 @@ namespace ProjetoContaBancaria.Infra.Data
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Num_NumeroConta", Num_NumeroConta);
                 cmd.Parameters.AddWithValue("@Vlr_ValorDeposito", Vlr_Valor);
+                cmd.Parameters.Add("@Num_Retorno", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
                 cmd.ExecuteNonQuery();
+
+                return int.Parse(cmd.Parameters["@Num_Retorno"].Value.ToString());
             }
         }
 
-        public void Saque(decimal Num_NumeroConta, decimal Vlr_Valor)
+        public int Saque(decimal Num_NumeroConta, decimal Vlr_Valor)
         {
             using (contexto = new Contexto())
             {
@@ -124,11 +127,14 @@ namespace ProjetoContaBancaria.Infra.Data
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Num_NumeroConta", Num_NumeroConta);
                 cmd.Parameters.AddWithValue("@Vlr_ValorSaque", Vlr_Valor);
+                cmd.Parameters.Add("@Num_Retorno", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
                 cmd.ExecuteNonQuery();
+
+                return int.Parse(cmd.Parameters["@Num_Retorno"].Value.ToString());
             }
         }
 
-        public void Transferencia(decimal Num_NumeroContaT, decimal Num_NumeroContaR, decimal Vlr_Valor)
+        public int Transferencia(decimal Num_NumeroContaT, decimal Num_NumeroContaR, decimal Vlr_Valor)
         {
             using (contexto = new Contexto())
             {
@@ -137,7 +143,10 @@ namespace ProjetoContaBancaria.Infra.Data
                 cmd.Parameters.AddWithValue("@Num_NumeroContaTransferindo", Num_NumeroContaT);
                 cmd.Parameters.AddWithValue("@Num_NumeroContaRecebendo", Num_NumeroContaR);
                 cmd.Parameters.AddWithValue("@Vlr_ValorTransferencia", Vlr_Valor);
+                cmd.Parameters.Add("@Num_Retorno", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
                 cmd.ExecuteNonQuery();
+
+                return int.Parse(cmd.Parameters["@Num_Retorno"].Value.ToString());
             }
         }
     }

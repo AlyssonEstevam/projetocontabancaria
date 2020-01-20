@@ -166,16 +166,19 @@ CREATE PROCEDURE [dbo].[UpdRealizaDeposito]
 	*/
 
 	BEGIN
+		DECLARE @RETURN INT;
+
 		DECLARE @Ind_TempContaAtiva BIT;
 		SELECT @Ind_TempContaAtiva = Ind_ContaAtiva 
 		FROM [dbo].[Contas] WITH (NOLOCK) 
 		WHERE Num_NumeroConta = @Num_NumeroConta;
 		
 		IF (@Ind_TempContaAtiva = 0)
-			RETURN 1;
+			RETURN 1
 		IF (@Vlr_ValorDeposito <= 0)
-			RETURN 2;
+			RETURN 2
 		ELSE
+		BEGIN
 			DECLARE @Vlr_TempSaldoAtual MONEY;
 			SELECT @Vlr_TempSaldoAtual = Vlr_Saldo 
 			FROM [dbo].[Contas] WITH (NOLOCK) 
@@ -193,6 +196,7 @@ CREATE PROCEDURE [dbo].[UpdRealizaDeposito]
 			EXEC [dbo].[InsOperacao] @Dat_DataAtual, 'DEPOSITO', 'C', @Vlr_ValorDeposito, @Num_NumeroConta;
 
 			RETURN 0
+		END
 	END
 GO
 
@@ -232,6 +236,7 @@ CREATE PROCEDURE [dbo].[UpdRealizaSaque]
 		IF (@Vlr_ValorSaque <= 0)
 			RETURN 2;
 		ELSE
+		BEGIN
 			DECLARE @Vlr_TempSaldoAtual MONEY;
 			SELECT @Vlr_TempSaldoAtual = Vlr_Saldo 
 			FROM [dbo].[Contas] WITH (NOLOCK) 
@@ -240,6 +245,7 @@ CREATE PROCEDURE [dbo].[UpdRealizaSaque]
 			IF (@Vlr_ValorSaque > @Vlr_TempSaldoAtual)
 				RETURN 3;
 			ELSE
+			BEGIN
 				SET @Vlr_TempSaldoAtual = @Vlr_TempSaldoAtual - @Vlr_ValorSaque;					
 
 				UPDATE [dbo].[Contas] 
@@ -251,6 +257,8 @@ CREATE PROCEDURE [dbo].[UpdRealizaSaque]
 
 				EXEC [dbo].[InsOperacao] @Dat_DataAtual, 'SAQUE', 'D', @Vlr_ValorSaque, @Num_NumeroConta;
 				RETURN 0
+			END
+		END
 	END
 GO
 
@@ -290,6 +298,7 @@ CREATE PROCEDURE [dbo].[UpdRealizaTransferencia]
 		IF (@Ind_TempContaAtiva = 0)
 			RETURN 1;
 		ELSE
+		BEGIN
 			SELECT @Ind_TempContaAtiva = Ind_ContaAtiva 
 			FROM [dbo].[Contas] WITH (NOLOCK) 
 			WHERE Num_NumeroConta = @Num_NumeroContaRecebendo
@@ -297,9 +306,11 @@ CREATE PROCEDURE [dbo].[UpdRealizaTransferencia]
 			IF (@Ind_TempContaAtiva = 0)
 				RETURN 2;
 			ELSE
+			BEGIN
 				IF (@Vlr_ValorTransferencia <= 0)
 					RETURN 3;
 				ELSE
+				BEGIN
 					DECLARE @tempSaldoAtualContaTransferindo MONEY;
 					SELECT @tempSaldoAtualContaTransferindo = Vlr_Saldo 
 					FROM [dbo].[Contas] WITH (NOLOCK) 
@@ -308,6 +319,7 @@ CREATE PROCEDURE [dbo].[UpdRealizaTransferencia]
 					IF (@Vlr_ValorTransferencia > @tempSaldoAtualContaTransferindo)
 						RETURN 4;
 					ELSE
+					BEGIN
 						DECLARE @tempSaldoAtualContaRecebendo MONEY;
 						SELECT @tempSaldoAtualContaRecebendo = Vlr_Saldo 
 						FROM [dbo].[Contas] WITH (NOLOCK) 
@@ -330,5 +342,9 @@ CREATE PROCEDURE [dbo].[UpdRealizaTransferencia]
 						EXEC [dbo].[InsOperacao] @Dat_DataAtual, 'TRANSFERENCIA', 'D', @Vlr_ValorTransferencia, @Num_NumeroContaTransferindo;
 						EXEC [dbo].[InsOperacao] @Dat_DataAtual, 'TRANSFERENCIA', 'C', @Vlr_ValorTransferencia, @Num_NumeroContaRecebendo;
 						RETURN 0
+					END
+				END
+			END
+		END
 	END
 GO

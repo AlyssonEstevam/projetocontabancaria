@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,6 +46,10 @@
     <Compile Include="Conta\Dto\ContaDto.cs" />
     <Compile Include="Conta\IContaRepository.cs" />
     <Compile Include="Conta\IContaService.cs" />
+    <Compile Include="Notification\Notification.cs" />
+    <Compile Include="Notification\NotificationContext.cs" />
+    <Compile Include="Operacao\Dto\OperacaoDto.cs" />
+    <Compile Include="Operacao\IOperacaoRepository.cs" />
     <Compile Include="Pessoa\Dto\PessoaDto.cs" />
     <Compile Include="Pessoa\IPessoaRepository.cs" />
     <Compile Include="Pessoa\IPessoaService.cs" />

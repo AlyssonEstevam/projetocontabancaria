@@ -1,4 +1,6 @@
 ﻿using ProjetoContaBancaria.Domain.Conta;
+using ProjetoContaBancaria.Domain.Notification;
+using ProjetoContaBancaria.Domain.Operacao;
 using ProjetoContaBancaria.Domain.Pessoa;
 using ProjetoContaBancaria.Infra.Data;
 using SimpleInjector;
@@ -13,7 +15,8 @@ namespace ProjetoContaBancaria.Api
         public static Container Build()
         {
             Container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
-            //Container.RegisterSingleton(Config.Parameters);
+
+            Container.Register<NotificationContext>(Lifestyle.Scoped);
 
             RegisterRepositories();
             RegisterServices();
@@ -26,6 +29,7 @@ namespace ProjetoContaBancaria.Api
         {
             Container.Register<IPessoaRepository, PessoaRepository>(Lifestyle.Scoped);
             Container.Register<IContaRepository, ContaRepository>(Lifestyle.Scoped);
+            Container.Register<IOperacaoRepository, OperacaoRepository>(Lifestyle.Scoped);
         }
 
         private static void RegisterServices()
