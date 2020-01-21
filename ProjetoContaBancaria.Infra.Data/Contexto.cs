@@ -7,18 +7,18 @@ namespace ProjetoContaBancaria.Infra.Data
 {
     public class Contexto : IDisposable
     {
-        public readonly SqlConnection conexaoBD;
+        public readonly SqlConnection ConexaoBD;
 
         public Contexto()
         {
-            conexaoBD = new SqlConnection(ConfigurationManager.ConnectionStrings["ProjetoContaBancariaConfig"].ConnectionString);
-            conexaoBD.Open();
+            ConexaoBD = new SqlConnection(ConfigurationManager.ConnectionStrings["ProjetoContaBancariaConfig"].ConnectionString);
+            ConexaoBD.Open();
         }
 
         public void Dispose()
         {
-            if (conexaoBD.State == ConnectionState.Open)
-                conexaoBD.Close();
+            if (ConexaoBD.State == ConnectionState.Open)
+                ConexaoBD.Close();
         }
     }
 }

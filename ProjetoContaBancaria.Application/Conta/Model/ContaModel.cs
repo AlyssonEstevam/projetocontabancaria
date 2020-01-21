@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjetoContaBancaria.Application.Conta.Model
 {
-    class ContaModel
+    public class ContaModel
     {
         public decimal Num_NumeroConta { get; set; }
         public decimal Vlr_Saldo { get; set; }

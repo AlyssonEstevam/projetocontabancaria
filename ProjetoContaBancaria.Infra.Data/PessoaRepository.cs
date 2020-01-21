@@ -10,7 +10,7 @@ namespace ProjetoContaBancaria.Infra.Data
 {
     public class PessoaRepository : IPessoaRepository
     {
-        private Contexto contexto;
+        private Contexto _contexto;
 
         private enum Procedures
         {
@@ -23,9 +23,9 @@ namespace ProjetoContaBancaria.Infra.Data
 
         public void Post(PessoaDto pessoa)
         {
-            using (contexto = new Contexto())
+            using (_contexto = new Contexto())
             {
-                SqlCommand cmd = new SqlCommand(Procedures.InsPessoa.ToString(), contexto.conexaoBD);
+                SqlCommand cmd = new SqlCommand(Procedures.InsPessoa.ToString(), _contexto.ConexaoBD);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Num_cpf", pessoa.Num_Cpf);
                 cmd.Parameters.AddWithValue("@Nom_Nome", pessoa.Nom_Nome);
@@ -40,9 +40,9 @@ namespace ProjetoContaBancaria.Infra.Data
 
         public IEnumerable<PessoaDto> Get()
         {
-            using (contexto = new Contexto())
+            using (_contexto = new Contexto())
             {
-                SqlCommand cmd = new SqlCommand(Procedures.SelPessoa.ToString(), contexto.conexaoBD);
+                SqlCommand cmd = new SqlCommand(Procedures.SelPessoa.ToString(), _contexto.ConexaoBD);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 return ReaderToList(cmd.ExecuteReader());
@@ -51,9 +51,9 @@ namespace ProjetoContaBancaria.Infra.Data
 
         public PessoaDto GetById(string id)
         {
-            using (contexto = new Contexto())
+            using (_contexto = new Contexto())
             {
-                SqlCommand cmd = new SqlCommand(Procedures.SelPorIdPessoa.ToString(), contexto.conexaoBD);
+                SqlCommand cmd = new SqlCommand(Procedures.SelPorIdPessoa.ToString(), _contexto.ConexaoBD);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Num_Cpf", id);
 
@@ -85,9 +85,9 @@ namespace ProjetoContaBancaria.Infra.Data
 
         public void Delete(string id)
         {
-            using (contexto = new Contexto())
+            using (_contexto = new Contexto())
             {
-                SqlCommand cmd = new SqlCommand(Procedures.DelPessoa.ToString(), contexto.conexaoBD);
+                SqlCommand cmd = new SqlCommand(Procedures.DelPessoa.ToString(), _contexto.ConexaoBD);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Num_cpf", id);
                 cmd.ExecuteNonQuery();
@@ -96,9 +96,9 @@ namespace ProjetoContaBancaria.Infra.Data
 
         public void Put(PessoaDto pessoa)
         {
-            using (contexto = new Contexto())
+            using (_contexto = new Contexto())
             {
-                SqlCommand cmd = new SqlCommand(Procedures.UpdPessoa.ToString(), contexto.conexaoBD);
+                SqlCommand cmd = new SqlCommand(Procedures.UpdPessoa.ToString(), _contexto.ConexaoBD);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Num_cpf", pessoa.Num_Cpf);
                 cmd.Parameters.AddWithValue("@Nom_Nome", pessoa.Nom_Nome);

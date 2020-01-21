@@ -13,7 +13,7 @@ namespace ProjetoContaBancaria.Infra.Data
 {
     public class OperacaoRepository : IOperacaoRepository
     {
-        private Contexto contexto;
+        private Contexto _contexto;
 
         private enum Procedures
         {
@@ -23,9 +23,9 @@ namespace ProjetoContaBancaria.Infra.Data
 
         public IEnumerable<OperacaoDto> Get()
         {
-            using (contexto = new Contexto())
+            using (_contexto = new Contexto())
             {
-                SqlCommand cmd = new SqlCommand(Procedures.SelOperacao.ToString(), contexto.conexaoBD);
+                SqlCommand cmd = new SqlCommand(Procedures.SelOperacao.ToString(), _contexto.ConexaoBD);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 return ReaderToList(cmd.ExecuteReader());
@@ -34,9 +34,9 @@ namespace ProjetoContaBancaria.Infra.Data
 
         public IEnumerable<OperacaoDto> GetById(string id)
         {
-            using (contexto = new Contexto())
+            using (_contexto = new Contexto())
             {
-                SqlCommand cmd = new SqlCommand(Procedures.SelPorContaOperacao.ToString(), contexto.conexaoBD);
+                SqlCommand cmd = new SqlCommand(Procedures.SelPorContaOperacao.ToString(), _contexto.ConexaoBD);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Num_NumeroConta", id);
 

@@ -10,7 +10,7 @@ namespace ProjetoContaBancaria.Infra.Data
 {
     public class ContaRepository : IContaRepository
     {
-        private Contexto contexto;
+        private Contexto _contexto;
 
         private enum Procedures
         {
@@ -26,9 +26,9 @@ namespace ProjetoContaBancaria.Infra.Data
 
         public void Post(ContaDto conta)
         {
-            using (contexto = new Contexto())
+            using (_contexto = new Contexto())
             {
-                SqlCommand cmd = new SqlCommand(Procedures.InsConta.ToString(), contexto.conexaoBD);
+                SqlCommand cmd = new SqlCommand(Procedures.InsConta.ToString(), _contexto.ConexaoBD);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Num_NumeroConta", conta.Num_NumeroConta);
                 cmd.Parameters.AddWithValue("@Vlr_Saldo", conta.Vlr_Saldo);
@@ -39,9 +39,9 @@ namespace ProjetoContaBancaria.Infra.Data
 
         public IEnumerable<ContaDto> Get()
         {
-            using (contexto = new Contexto())
+            using (_contexto = new Contexto())
             {
-                SqlCommand cmd = new SqlCommand(Procedures.SelConta.ToString(), contexto.conexaoBD);
+                SqlCommand cmd = new SqlCommand(Procedures.SelConta.ToString(), _contexto.ConexaoBD);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 return ReaderToList(cmd.ExecuteReader());
@@ -50,9 +50,9 @@ namespace ProjetoContaBancaria.Infra.Data
 
         public ContaDto GetById(string id)
         {
-            using (contexto = new Contexto())
+            using (_contexto = new Contexto())
             {
-                SqlCommand cmd = new SqlCommand(Procedures.SelPorIdConta.ToString(), contexto.conexaoBD);
+                SqlCommand cmd = new SqlCommand(Procedures.SelPorIdConta.ToString(), _contexto.ConexaoBD);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Num_NumeroConta", id);
 
@@ -81,9 +81,9 @@ namespace ProjetoContaBancaria.Infra.Data
 
         public void Delete(string id)
         {
-            using (contexto = new Contexto())
+            using (_contexto = new Contexto())
             {
-                SqlCommand cmd = new SqlCommand(Procedures.DelConta.ToString(), contexto.conexaoBD);
+                SqlCommand cmd = new SqlCommand(Procedures.DelConta.ToString(), _contexto.ConexaoBD);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Num_NumeroConta", id);
                 cmd.ExecuteNonQuery();
@@ -92,9 +92,9 @@ namespace ProjetoContaBancaria.Infra.Data
 
         public void Put(ContaDto conta)
         {
-            using (contexto = new Contexto())
+            using (_contexto = new Contexto())
             {
-                SqlCommand cmd = new SqlCommand(Procedures.UpdConta.ToString(), contexto.conexaoBD);
+                SqlCommand cmd = new SqlCommand(Procedures.UpdConta.ToString(), _contexto.ConexaoBD);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Num_NumeroConta", conta.Num_NumeroConta);
                 cmd.Parameters.AddWithValue("@Vlr_Saldo", conta.Vlr_Saldo);
@@ -106,9 +106,9 @@ namespace ProjetoContaBancaria.Infra.Data
 
         public int Deposito(decimal Num_NumeroConta, decimal Vlr_Valor)
         {
-            using (contexto = new Contexto())
+            using (_contexto = new Contexto())
             {
-                SqlCommand cmd = new SqlCommand(Procedures.UpdDeposito.ToString(), contexto.conexaoBD);
+                SqlCommand cmd = new SqlCommand(Procedures.UpdDeposito.ToString(), _contexto.ConexaoBD);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Num_NumeroConta", Num_NumeroConta);
                 cmd.Parameters.AddWithValue("@Vlr_ValorDeposito", Vlr_Valor);
@@ -121,9 +121,9 @@ namespace ProjetoContaBancaria.Infra.Data
 
         public int Saque(decimal Num_NumeroConta, decimal Vlr_Valor)
         {
-            using (contexto = new Contexto())
+            using (_contexto = new Contexto())
             {
-                SqlCommand cmd = new SqlCommand(Procedures.UpdSaque.ToString(), contexto.conexaoBD);
+                SqlCommand cmd = new SqlCommand(Procedures.UpdSaque.ToString(), _contexto.ConexaoBD);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Num_NumeroConta", Num_NumeroConta);
                 cmd.Parameters.AddWithValue("@Vlr_ValorSaque", Vlr_Valor);
@@ -136,9 +136,9 @@ namespace ProjetoContaBancaria.Infra.Data
 
         public int Transferencia(decimal Num_NumeroContaT, decimal Num_NumeroContaR, decimal Vlr_Valor)
         {
-            using (contexto = new Contexto())
+            using (_contexto = new Contexto())
             {
-                SqlCommand cmd = new SqlCommand(Procedures.UpdTransferencia.ToString(), contexto.conexaoBD);
+                SqlCommand cmd = new SqlCommand(Procedures.UpdTransferencia.ToString(), _contexto.ConexaoBD);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Num_NumeroContaTransferindo", Num_NumeroContaT);
                 cmd.Parameters.AddWithValue("@Num_NumeroContaRecebendo", Num_NumeroContaR);
