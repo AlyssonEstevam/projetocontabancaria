@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ProjetoContaBancaria.Web.Application.Conta.Model.ContaModel>
+
+@{
+    ViewBag.Title = "Contas";
+}
+
+<h2>Contas</h2>
+
+<p>
+    @Html.ActionLink("Cadastrar", "Cadastrar")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Num_NumeroContaFormatada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vlr_SaldoFormatado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dat_DataAberturaFormatada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ind_ContaAtiva)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Num_NumeroContaFormatada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vlr_SaldoFormatado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dat_DataAberturaFormatada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ind_ContaAtiva)
+        </td>
+        <td>
+            @Html.ActionLink("Alterar", "Alterar", new { id=item.Num_NumeroContaFormatada }) |
+            @Html.ActionLink("Excluir", "Excluir", new { id=item.Num_NumeroContaFormatada })
+        </td>
+    </tr>
+}
+
+</table>

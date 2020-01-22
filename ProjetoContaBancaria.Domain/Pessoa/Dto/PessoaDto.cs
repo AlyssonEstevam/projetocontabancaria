@@ -1,4 +1,5 @@
 ﻿using System;
+using ProjetoContaBancaria.Domain.Conta.Dto;
 using ProjetoContaBancaria.Domain.Notification;
 
 namespace ProjetoContaBancaria.Domain.Pessoa.Dto
@@ -12,6 +13,7 @@ namespace ProjetoContaBancaria.Domain.Pessoa.Dto
         public char Ind_Sexo { get; set; }
         public decimal Vlr_Renda { get; set; }
         public decimal Num_NumeroConta { get; set; }
+        public ContaDto Conta { get; set; }
 
         public bool IsValid(NotificationContext notification)
         {

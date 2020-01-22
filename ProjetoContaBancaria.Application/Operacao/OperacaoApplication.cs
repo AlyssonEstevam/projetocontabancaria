@@ -1,9 +1,9 @@
 ﻿using System.Net.Http;
 using System.Net.Http.Headers;
 
-namespace ProjetoContaBancaria.Application.Operacao
+namespace ProjetoContaBancaria.Web.Application.Operacao
 {
-    class OperacaoApplication
+    public class OperacaoApplication
     {
         static readonly HttpClient cliente = new HttpClient();
         private string _url = "";

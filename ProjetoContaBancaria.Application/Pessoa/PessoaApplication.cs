@@ -8,12 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using ProjetoContaBancaria.Application.Conta.Model;
-using ProjetoContaBancaria.Application.Pessoa.Model;
+using ProjetoContaBancaria.Web.Application.Conta.Model;
+using ProjetoContaBancaria.Web.Application.Pessoa.Model;
 
-namespace ProjetoContaBancaria.Application.Pessoa
+namespace ProjetoContaBancaria.Web.Application.Pessoa
 {
-    class PessoaApplication
+    public class PessoaApplication
     {
         static readonly HttpClient cliente = new HttpClient();
         private string _url = "";
@@ -30,7 +30,7 @@ namespace ProjetoContaBancaria.Application.Pessoa
 
         public HttpResponseMessage Get(string id)
         {
-            _url = "http://localhost:64771/api/Conta" + "?id=" + id;
+            _url = "http://localhost:64771/api/Pessoa" + "?id=" + id;
             cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _response = cliente.GetAsync(_url).Result;
 

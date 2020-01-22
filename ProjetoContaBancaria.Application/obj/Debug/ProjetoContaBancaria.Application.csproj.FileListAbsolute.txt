@@ -1,0 +1,15 @@
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Application\bin\Debug\ProjetoContaBancaria.Application.dll.config
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Application\bin\Debug\ProjetoContaBancaria.Application.dll
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Application\bin\Debug\ProjetoContaBancaria.Application.pdb
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Application\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Application\bin\Debug\ProjetoContaBancaria.Domain.dll
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Application\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Application\bin\Debug\ProjetoContaBancaria.Domain.pdb
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Application\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Application\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Application\bin\Debug\pt-br\System.Net.Http.Formatting.resources.dll
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Application\obj\Debug\ProjetoContaBancaria.Application.csprojAssemblyReference.cache
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Application\obj\Debug\ProjetoContaBancaria.Application.csproj.CoreCompileInputs.cache
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Application\obj\Debug\ProjetoContaBancaria.Application.csproj.CopyComplete
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Application\obj\Debug\ProjetoContaBancaria.Application.dll
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Application\obj\Debug\ProjetoContaBancaria.Application.pdb

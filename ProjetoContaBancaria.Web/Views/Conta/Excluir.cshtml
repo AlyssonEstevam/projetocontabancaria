@@ -1,0 +1,54 @@
+﻿@model ProjetoContaBancaria.Web.Application.Conta.Model.ContaModel
+
+@{
+    ViewBag.Title = "Excluir Conta";
+}
+
+<h2>Excluir Conta</h2>
+
+<h3>Você deseja realmente excluir essa conta?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Num_NumeroContaFormatada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Num_NumeroContaFormatada)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Vlr_SaldoFormatado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vlr_SaldoFormatado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dat_DataAberturaFormatada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dat_DataAberturaFormatada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ind_ContaAtiva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ind_ContaAtiva)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-default" /> |
+            @Html.ActionLink("Cancelar", "Index")
+        </div>
+    }
+</div>

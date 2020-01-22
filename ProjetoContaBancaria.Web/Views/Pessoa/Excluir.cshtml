@@ -1,0 +1,77 @@
+﻿@model ProjetoContaBancaria.Web.Application.Pessoa.Model.PessoaModel
+
+@{
+    ViewBag.Title = "Excluir Pessoa";
+}
+
+<h2>Excluir Pessoa</h2>
+
+<h3>Você deseja realmente excluir essa pessoa da sua vida?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Num_CpfFormatado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Num_CpfFormatado)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom_Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nom_Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom_Sobrenome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nom_Sobrenome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dat_DataNascimentoFormatada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dat_DataNascimentoFormatada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ind_Sexo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ind_Sexo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vlr_RendaFormatada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vlr_RendaFormatada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Num_NumeroContaFormatada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Num_NumeroContaFormatada)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-default" /> |
+            @Html.ActionLink("Cancelar", "Index")
+        </div>
+    }
+</div>

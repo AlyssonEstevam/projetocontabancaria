@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjetoContaBancaria.Application.Conta.Model
+namespace ProjetoContaBancaria.Web.Application.Conta.Model
 {
     public class OperacoesContaModel
     {

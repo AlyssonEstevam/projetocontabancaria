@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using ProjetoContaBancaria.Application.Conta.Model;
+using ProjetoContaBancaria.Web.Application.Conta.Model;
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 
-namespace ProjetoContaBancaria.Application.Conta
+namespace ProjetoContaBancaria.Web.Application.Conta
 {
     public class ContaApplication
     {
