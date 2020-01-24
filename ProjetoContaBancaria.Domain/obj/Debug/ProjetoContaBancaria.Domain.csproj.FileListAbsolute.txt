@@ -1,6 +1,4 @@
 C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Domain\bin\Debug\ProjetoContaBancaria.Domain.dll
 C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Domain\bin\Debug\ProjetoContaBancaria.Domain.pdb
-C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Domain\obj\Debug\ProjetoContaBancaria.Domain.csproj.CoreCompileInputs.cache
 C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Domain\obj\Debug\ProjetoContaBancaria.Domain.dll
 C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Domain\obj\Debug\ProjetoContaBancaria.Domain.pdb
-C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Domain\obj\Debug\ProjetoContaBancaria.Domain.csprojAssemblyReference.cache

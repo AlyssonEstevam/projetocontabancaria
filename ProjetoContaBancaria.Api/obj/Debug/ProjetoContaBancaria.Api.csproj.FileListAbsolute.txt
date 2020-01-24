@@ -72,6 +72,7 @@ C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\bin\Antlr
 C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\bin\Newtonsoft.Json.xml
 C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\bin\SimpleInjector.xml
 C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\bin\SimpleInjector.Integration.WebApi.xml
+C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\bin\System.Net.Http.Formatting.xml
 C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\bin\System.Web.Helpers.xml
 C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\bin\System.Web.Mvc.xml
 C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\bin\System.Web.Optimization.xml
@@ -79,7 +80,6 @@ C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\bin\Syste
 C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\bin\System.Web.WebPages.xml
 C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\bin\System.Web.WebPages.Razor.xml
-C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\bin\System.Net.Http.Formatting.xml
 C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\bin\System.Web.Http.xml
 C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\bin\System.Web.Http.WebHost.xml
 C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
@@ -87,7 +87,6 @@ C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\bin\pt-br
 C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\bin\pt-br\System.Web.Http.resources.dll
 C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\bin\pt-br\System.Web.Http.WebHost.resources.dll
 C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\obj\Debug\ProjetoContaBancaria.Api.csprojAssemblyReference.cache
-C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\obj\Debug\ProjetoContaBancaria.Api.csproj.CoreCompileInputs.cache
 C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\obj\Debug\ProjetoContaBancaria.Api.csproj.CopyComplete
 C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\obj\Debug\ProjetoContaBancaria.Api.dll
 C:\Users\Alysson\Desktop\ProjetoContaBancaria\ProjetoContaBancaria.Api\obj\Debug\ProjetoContaBancaria.Api.pdb
