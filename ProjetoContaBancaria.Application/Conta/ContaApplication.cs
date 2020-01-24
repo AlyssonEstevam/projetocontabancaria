@@ -71,22 +71,20 @@ namespace ProjetoContaBancaria.Web.Application.Conta
 
         public HttpResponseMessage Delete(string id)
         {
-            string URL = "http://localhost:64771/api/Conta/Delete" + "?id=" + id;
+            _url = "http://localhost:64771/api/Conta/Delete" + "?id=" + id;
 
             cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            _response = cliente.DeleteAsync(URL).Result;
+            _response = cliente.DeleteAsync(_url).Result;
 
 
             return _response;
         }
 
-        public HttpResponseMessage Deposito(decimal Num_NumeroConta, decimal Vlr_Valor)
+        public HttpResponseMessage Deposito(OperacoesContaModel operacoesConta)
         {
             _url = "http://localhost:64771/api/Conta/Deposito";
 
-            OperacoesContaModel contaOperacao = new OperacoesContaModel(Num_NumeroConta, Vlr_Valor);
-
-            _response = cliente.PutAsync(_url, contaOperacao, new JsonMediaTypeFormatter
+            _response = cliente.PostAsync(_url, operacoesConta, new JsonMediaTypeFormatter
             {
                 SerializerSettings = new JsonSerializerSettings
                 {
@@ -102,13 +100,11 @@ namespace ProjetoContaBancaria.Web.Application.Conta
             return _response;
         }
 
-        public HttpResponseMessage Saque(decimal Num_NumeroConta, decimal Vlr_Valor)
+        public HttpResponseMessage Saque(OperacoesContaModel operacoesConta)
         {
             _url = "http://localhost:64771/api/Conta/Saque";
 
-            OperacoesContaModel contaOperacao = new OperacoesContaModel(Num_NumeroConta, Vlr_Valor);
-
-            _response = cliente.PutAsync(_url, contaOperacao, new JsonMediaTypeFormatter
+            _response = cliente.PostAsync(_url, operacoesConta, new JsonMediaTypeFormatter
             {
                 SerializerSettings = new JsonSerializerSettings
                 {
@@ -124,13 +120,11 @@ namespace ProjetoContaBancaria.Web.Application.Conta
             return _response;
         }
 
-        public HttpResponseMessage Transferencia(decimal Num_NumeroContaT, decimal Num_NumeroContaR, decimal Vlr_Valor)
+        public HttpResponseMessage Transferencia(OperacoesContaModel operacoesConta)
         {
             _url = "http://localhost:64771/api/Conta/Transferencia";
 
-            OperacoesContaModel contaOperacao = new OperacoesContaModel(Num_NumeroContaT, Num_NumeroContaR, Vlr_Valor);
-
-            _response = cliente.PutAsync(_url, contaOperacao, new JsonMediaTypeFormatter
+            _response = cliente.PostAsync(_url, operacoesConta, new JsonMediaTypeFormatter
             {
                 SerializerSettings = new JsonSerializerSettings
                 {

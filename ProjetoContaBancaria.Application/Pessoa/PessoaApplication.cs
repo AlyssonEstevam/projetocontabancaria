@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using ProjetoContaBancaria.Web.Application.Pessoa.Model;
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using ProjetoContaBancaria.Web.Application.Conta.Model;
-using ProjetoContaBancaria.Web.Application.Pessoa.Model;
 
 namespace ProjetoContaBancaria.Web.Application.Pessoa
 {

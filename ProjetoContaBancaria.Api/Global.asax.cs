@@ -1,12 +1,7 @@
-﻿using System.Web;
-using ProjetoContaBancaria.Domain.Conta;
-using ProjetoContaBancaria.Domain.Pessoa;
-using ProjetoContaBancaria.Infra.Data;
-using SimpleInjector;
+﻿using ProjetoContaBancaria.Api.App_Start;
 using SimpleInjector.Integration.WebApi;
-using SimpleInjector.Lifestyles;
+using System.Web;
 using System.Web.Http;
-using ProjetoContaBancaria.Api.App_Start;
 
 namespace ProjetoContaBancaria.Api
 {

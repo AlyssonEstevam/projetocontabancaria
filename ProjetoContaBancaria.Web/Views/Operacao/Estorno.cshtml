@@ -1,0 +1,84 @@
+﻿@model ProjetoContaBancaria.Web.Application.Operacao.Model.OperacaoModel
+
+@{
+    ViewBag.Title = "Estorno";
+}
+
+<h2>Estorno</h2>
+
+<h3>Deseja estornar esta operação?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Num_CodigoFormatado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Num_CodigoFormatado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dat_DataFormatada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dat_DataFormatada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dat_Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dat_Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom_TipoOperacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nom_TipoOperacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ind_TipoMovimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ind_TipoMovimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vlr_ValorFormatado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vlr_ValorFormatado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Num_NumeroContaFormatado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Num_NumeroContaFormatado)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Num_Codigo)
+        @Html.HiddenFor(model => model.Ind_TipoMovimento)
+        @Html.HiddenFor(model => model.Vlr_Valor)
+        @Html.HiddenFor(model => model.Num_NumeroConta)
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Estornar" class="btn btn-default" /> |
+            @Html.ActionLink("Cancelar", "Index")
+        </div>
+    }
+</div>

@@ -49,6 +49,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Num_NumeroContaFormatado)
         </td>
+        <td>
+            @Html.ActionLink("Estorno", "Estorno", new { id = item.Num_CodigoFormatado })
+        </td>
     </tr>
 }
 

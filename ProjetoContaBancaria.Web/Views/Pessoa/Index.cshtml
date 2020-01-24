@@ -59,9 +59,12 @@
             @Html.DisplayFor(modelItem => item.Num_NumeroContaFormatada)
         </td>
         <td>
-            @Html.ActionLink("Alterar", "Alterar", new { id=item.Num_CpfFormatado }) |
-            @Html.ActionLink("Realizar Operação", "Operacoes", new { id = item.Num_NumeroContaFormatada }) |
-            @Html.ActionLink("Excluir", "Excluir", new { id = item.Num_CpfFormatado })
+            @Html.ActionLink("Alterar", "Alterar", new { id = item.Num_CpfFormatado }) |
+            @Html.ActionLink("Excluir", "Excluir", new { id = item.Num_CpfFormatado }) |
+            @Html.ActionLink("Saque", "Saque", new { id = item.Num_NumeroContaFormatada }) |
+            @Html.ActionLink("Deposito", "Deposito", new { id = item.Num_NumeroContaFormatada }) |
+            @Html.ActionLink("Transferencia", "Transferencia", new { id = item.Num_NumeroContaFormatada }) |
+            @Html.ActionLink("Extrato", "Extrato", new { id = item.Num_NumeroContaFormatada })
         </td>
     </tr>
 }

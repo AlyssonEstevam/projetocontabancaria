@@ -1,10 +1,14 @@
-﻿using ProjetoContaBancaria.Web.Application.Conta;
+﻿using System;
+using ProjetoContaBancaria.Web.Application.Conta;
 using ProjetoContaBancaria.Web.Application.Conta.Model;
 using ProjetoContaBancaria.Web.Application.Pessoa;
 using ProjetoContaBancaria.Web.Application.Pessoa.Model;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Web.Mvc;
+using System.Web.WebPages;
+using ProjetoContaBancaria.Web.Application.Operacao;
+using ProjetoContaBancaria.Web.Application.Operacao.Model;
 
 namespace ProjetoContaBancaria.Web.Controllers
 {
@@ -12,14 +16,17 @@ namespace ProjetoContaBancaria.Web.Controllers
     {
         private PessoaApplication _pessoaApplication;
         private ContaApplication _contaApplication;
+        private OperacaoApplication _operacaoApplication;
         private HttpResponseMessage _response;
 
         public PessoaController()
         {
             PessoaApplication pessoaApplication = new PessoaApplication();
             ContaApplication contaApplication = new ContaApplication();
+            OperacaoApplication operacaoApplication = new OperacaoApplication();
             _pessoaApplication = pessoaApplication;
             _contaApplication = contaApplication;
+            _operacaoApplication = operacaoApplication;
         }
         
         public ActionResult Index()
@@ -36,11 +43,94 @@ namespace ProjetoContaBancaria.Web.Controllers
             }
         }
         
-        public ActionResult Operacoes(string id)
+        public ActionResult Saque(string id)
         {
-            return View();
+            OperacoesContaModel operacoesConta = new OperacoesContaModel();
+            operacoesConta.Num_NumeroContaT = string.Format("{0:N0}", id).Replace(".", "");
+            return View(operacoesConta);
         }
-        
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Saque(OperacoesContaModel operacoesConta)
+        {
+            string conta = operacoesConta.Num_NumeroContaT;
+            decimal valor = operacoesConta.Vlr_Valor;
+            if (ModelState.IsValid)
+            {
+                _response = _contaApplication.Saque(operacoesConta);
+                if (_response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    //Tela de Saque realizado com sucesso!
+                    return RedirectToAction("Index");
+                }
+            }
+
+            return View("Error404");
+        }
+
+        public ActionResult Deposito(string id)
+        {
+            OperacoesContaModel operacoesConta = new OperacoesContaModel();
+            operacoesConta.Num_NumeroContaT = string.Format("{0:N0}", id).Replace(".", "");
+            return View(operacoesConta);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Deposito(OperacoesContaModel operacoesConta)
+        {
+            if (ModelState.IsValid)
+            {
+                _response = _contaApplication.Deposito(operacoesConta);
+                if (_response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    //Tela de Depósito realizado com sucesso!
+                    return RedirectToAction("Index");
+                }
+            }
+
+            return View("Error404");
+        }
+
+        public ActionResult Transferencia(string id)
+        {
+            OperacoesContaModel operacoesConta = new OperacoesContaModel();
+            operacoesConta.Num_NumeroContaT = string.Format("{0:N0}", id).Replace(".", "");
+            return View(operacoesConta);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Transferencia(OperacoesContaModel operacoesConta)
+        {
+            if (ModelState.IsValid)
+            {
+                _response = _contaApplication.Transferencia(operacoesConta);
+                if (_response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    //Tela de Transferencia realizada com sucesso!
+                    return RedirectToAction("Index");
+                }
+            }
+
+            return View("Error404");
+        }
+
+        public ActionResult Extrato(string id)
+        {
+            _response = _operacaoApplication.Get(id);
+
+            if (_response.StatusCode == System.Net.HttpStatusCode.OK && !id.IsEmpty())
+            {
+                return View(_response.Content.ReadAsAsync<List<OperacaoModel>>().Result);
+            }
+            else
+            {
+                return View("Error404");
+            }
+        }
+
         public ActionResult Cadastrar()
         {
             ViewBag.Num_NumeroConta = new SelectList(_contaApplication.Get().Content.ReadAsAsync<List<ContaModel>>().Result, "Num_NumeroConta", "Num_NumeroContaFormatada");
@@ -77,6 +167,7 @@ namespace ProjetoContaBancaria.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Alterar(PessoaModel pessoa)
         {
+
             if (ModelState.IsValid)
             {
                 _response = _pessoaApplication.Put(pessoa);

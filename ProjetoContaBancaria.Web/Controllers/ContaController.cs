@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Web;
-using System.Web.Mvc;
-using ProjetoContaBancaria.Web.Application.Conta;
+﻿using ProjetoContaBancaria.Web.Application.Conta;
 using ProjetoContaBancaria.Web.Application.Conta.Model;
-using ProjetoContaBancaria.Web.Application.Pessoa;
-using ProjetoContaBancaria.Web.Application.Pessoa.Model;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Web.Mvc;
 
 namespace ProjetoContaBancaria.Web.Controllers
 {

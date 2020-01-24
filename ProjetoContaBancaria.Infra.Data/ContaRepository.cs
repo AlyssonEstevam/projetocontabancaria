@@ -104,14 +104,14 @@ namespace ProjetoContaBancaria.Infra.Data
             }
         }
 
-        public int Deposito(decimal Num_NumeroConta, decimal Vlr_Valor)
+        public int Deposito(OperacoesContaDto operacoesConta)
         {
             using (_contexto = new Contexto())
             {
                 SqlCommand cmd = new SqlCommand(Procedures.UpdDeposito.ToString(), _contexto.ConexaoBD);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Num_NumeroConta", Num_NumeroConta);
-                cmd.Parameters.AddWithValue("@Vlr_ValorDeposito", Vlr_Valor);
+                cmd.Parameters.AddWithValue("@Num_NumeroConta", operacoesConta.Num_NumeroContaT);
+                cmd.Parameters.AddWithValue("@Vlr_ValorDeposito", operacoesConta.Vlr_Valor);
                 cmd.Parameters.Add("@Num_Retorno", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
                 cmd.ExecuteNonQuery();
 
@@ -119,14 +119,14 @@ namespace ProjetoContaBancaria.Infra.Data
             }
         }
 
-        public int Saque(decimal Num_NumeroConta, decimal Vlr_Valor)
+        public int Saque(OperacoesContaDto operacoesConta)
         {
             using (_contexto = new Contexto())
             {
                 SqlCommand cmd = new SqlCommand(Procedures.UpdSaque.ToString(), _contexto.ConexaoBD);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Num_NumeroConta", Num_NumeroConta);
-                cmd.Parameters.AddWithValue("@Vlr_ValorSaque", Vlr_Valor);
+                cmd.Parameters.AddWithValue("@Num_NumeroConta", operacoesConta.Num_NumeroContaT);
+                cmd.Parameters.AddWithValue("@Vlr_ValorSaque", operacoesConta.Vlr_Valor);
                 cmd.Parameters.Add("@Num_Retorno", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
                 cmd.ExecuteNonQuery();
 
@@ -134,15 +134,15 @@ namespace ProjetoContaBancaria.Infra.Data
             }
         }
 
-        public int Transferencia(decimal Num_NumeroContaT, decimal Num_NumeroContaR, decimal Vlr_Valor)
+        public int Transferencia(OperacoesContaDto operacoesConta)
         {
             using (_contexto = new Contexto())
             {
                 SqlCommand cmd = new SqlCommand(Procedures.UpdTransferencia.ToString(), _contexto.ConexaoBD);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Num_NumeroContaTransferindo", Num_NumeroContaT);
-                cmd.Parameters.AddWithValue("@Num_NumeroContaRecebendo", Num_NumeroContaR);
-                cmd.Parameters.AddWithValue("@Vlr_ValorTransferencia", Vlr_Valor);
+                cmd.Parameters.AddWithValue("@Num_NumeroContaTransferindo", operacoesConta.Num_NumeroContaT);
+                cmd.Parameters.AddWithValue("@Num_NumeroContaRecebendo", operacoesConta.Num_NumeroContaR);
+                cmd.Parameters.AddWithValue("@Vlr_ValorTransferencia", operacoesConta.Vlr_Valor);
                 cmd.Parameters.Add("@Num_Retorno", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
                 cmd.ExecuteNonQuery();
 

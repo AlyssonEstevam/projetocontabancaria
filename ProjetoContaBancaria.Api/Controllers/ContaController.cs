@@ -51,29 +51,28 @@ namespace ProjetoContaBancaria.Api.Controllers
             return Ok();
         }
 
-        [HttpPut, Route("api/Conta/Deposito")]
-        public IHttpActionResult Deposito(decimal Num_NumeroConta, decimal Vlr_Valor)
+        [HttpPost, Route("api/Conta/Deposito")]
+        public IHttpActionResult Deposito(OperacoesContaDto operacoesConta)
         {
-            _contaService.Deposito(Num_NumeroConta, Vlr_Valor);
+            _contaService.Deposito(operacoesConta);
             if (_notification.HasNotifications)
                 return Content(HttpStatusCode.BadRequest, _notification.Get);
             return Ok();
         }
 
-        [HttpPut, Route("api/Conta/Saque")]
-        public IHttpActionResult Saque(decimal Num_NumeroConta, decimal Vlr_Valor)
+        [HttpPost, Route("api/Conta/Saque")]
+        public IHttpActionResult Saque(OperacoesContaDto operacoesConta)
         {
-            _contaService.Saque(Num_NumeroConta, Vlr_Valor);
+            _contaService.Saque(operacoesConta);
             if (_notification.HasNotifications)
                 return Content(HttpStatusCode.BadRequest, _notification.Get);
             return Ok();
         }
 
-        [HttpPut, Route("api/Conta/Transferencia")]
-        public IHttpActionResult Transferencia(decimal Num_NumeroContaT, decimal Num_NumeroContaR,
-            decimal Vlr_Valor)
+        [HttpPost, Route("api/Conta/Transferencia")]
+        public IHttpActionResult Transferencia(OperacoesContaDto operacoesConta)
         {
-            _contaService.Transferencia(Num_NumeroContaT, Num_NumeroContaR, Vlr_Valor);
+            _contaService.Transferencia(operacoesConta);
             if (_notification.HasNotifications)
                 return Content(HttpStatusCode.BadRequest, _notification.Get);
             return Ok();

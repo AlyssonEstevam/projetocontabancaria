@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.WebPages;
-using ProjetoContaBancaria.Web.Application.Operacao;
+﻿using ProjetoContaBancaria.Web.Application.Operacao;
 using ProjetoContaBancaria.Web.Application.Operacao.Model;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Web.Mvc;
 
 namespace ProjetoContaBancaria.Web.Controllers
 {
@@ -35,13 +31,33 @@ namespace ProjetoContaBancaria.Web.Controllers
             }
         }
 
-        public ActionResult Extrato(string id)
+        public ActionResult Estorno(string id)
         {
-            _response = _operacaoApplication.Get(id);
+            _response = _operacaoApplication.GetOperacao(id);
+            OperacaoModel operacao = _response.Content.ReadAsAsync<OperacaoModel>().Result;
 
-            if (_response.StatusCode == System.Net.HttpStatusCode.OK && !id.IsEmpty())
+            decimal codigo = operacao.Num_Codigo;
+            char tipoMov = operacao.Ind_TipoMovimento;
+            decimal valor = operacao.Vlr_Valor;
+            decimal conta = operacao.Num_NumeroConta;
+
+            return View(operacao);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Estorno(OperacaoModel operacao)
+        {
+            decimal codigo = operacao.Num_Codigo;
+            char tipoMov = operacao.Ind_TipoMovimento;
+            decimal valor = operacao.Vlr_Valor;
+            decimal conta = operacao.Num_NumeroConta;
+
+            _response = _operacaoApplication.Estorno(operacao);
+            if (_response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                return View(_response.Content.ReadAsAsync<List<OperacaoModel>>().Result);
+                //Tela de Estorno realizado com sucesso!
+                return RedirectToAction("Index");
             }
             else
             {

@@ -7,5 +7,7 @@ namespace ProjetoContaBancaria.Domain.Operacao
     {
         IEnumerable<OperacaoDto> Get();
         IEnumerable<OperacaoDto> GetById(string id);
+        OperacaoDto GetByIdOperacao(string id);
+        int Estorno(OperacaoDto operacao);
     }
 }

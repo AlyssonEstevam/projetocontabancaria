@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Conta\ContaService.cs" />
     <Compile Include="Conta\Dto\ContaDto.cs" />
+    <Compile Include="Conta\Dto\OperacoesContaDto.cs" />
     <Compile Include="Conta\IContaRepository.cs" />
     <Compile Include="Conta\IContaService.cs" />
     <Compile Include="Notification\Notification.cs" />

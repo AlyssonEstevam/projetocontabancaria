@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ProjetoContaBancaria.Web.Application.Operacao.Model.OperacaoModel>
+
+@{
+    ViewBag.Title = "Extrato";
+}
+
+<h2>Extrato</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Num_CodigoFormatado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dat_DataFormatada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nom_TipoOperacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ind_TipoMovimento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vlr_Valor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Num_NumeroContaFormatado)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Num_CodigoFormatado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dat_DataFormatada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom_TipoOperacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ind_TipoMovimento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vlr_Valor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Num_NumeroContaFormatado)
+            </td>
+        </tr>
+    }
+    
+</table>
+
+<div>
+    @Html.ActionLink("Voltar", "Index", "Pessoa")
+</div>

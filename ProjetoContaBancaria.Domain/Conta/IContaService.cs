@@ -7,8 +7,8 @@ namespace ProjetoContaBancaria.Domain.Conta
     {
         void Post(ContaDto conta);
         void Put(ContaDto conta);
-        void Deposito(decimal Num_NumeroConta, decimal Vlr_Valor);
-        void Saque(decimal Num_NumeroConta, decimal Vlr_Valor);
-        void Transferencia(decimal Num_NumeroContaT, decimal Num_NumeroContaR, decimal Vlr_Valor);
+        void Deposito(OperacoesContaDto operacoesConta);
+        void Saque(OperacoesContaDto operacoesConta);
+        void Transferencia(OperacoesContaDto operacoesConta);
     }
 }

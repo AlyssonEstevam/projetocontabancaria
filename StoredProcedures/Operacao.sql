@@ -56,6 +56,31 @@ CREATE PROCEDURE [dbo].[SelOperacao]
 	END
 GO
 
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[SelPorIdOperacao]') AND objectproperty(id, N'IsPROCEDURE')=1)
+	DROP PROCEDURE [dbo].[SelPorIdOperacao]
+GO 
+
+CREATE PROCEDURE [dbo].[SelPorIdOperacao]
+	@Num_Codigo	DECIMAL(18,0)
+
+	AS
+
+	/*
+	Documentação
+	Arquivo Fonte.....: Conta.sql
+	Objetivo..........: Seleciona uma tupla da tabela Operacao correspondente ao ID recebido.
+	Autor.............: Alysson Estevam
+ 	Data..............: 24/01/2020
+	Ex................: EXEC [dbo].[SelPorIdOperacao] '15'
+	*/
+
+	BEGIN
+		SELECT * 
+		FROM [dbo].[Operacoes] WITH (NOLOCK) 
+		WHERE Num_Codigo = @Num_Codigo
+	END
+GO
+
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[SelPorContaOperacao]') AND objectproperty(id, N'IsPROCEDURE')=1)
 	DROP PROCEDURE [dbo].[SelPorContaOperacao]
 GO 
@@ -78,5 +103,48 @@ CREATE PROCEDURE [dbo].[SelPorContaOperacao]
 		SELECT * 
 		FROM [dbo].[Operacoes] WITH (NOLOCK) 
 		WHERE Num_NumeroConta = @Num_NumeroConta
+	END
+GO
+
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[UpdEstorno]') AND objectproperty(id, N'IsPROCEDURE')=1)
+	DROP PROCEDURE [dbo].[UpdEstorno]
+GO 
+
+CREATE PROCEDURE [dbo].[UpdEstorno]
+	@Num_Codigo			DECIMAL(18,0),
+	@Ind_TipoMovimento	CHAR(1),
+	@Vlr_Valor			DECIMAL(18,0),
+	@Num_NumeroConta	DECIMAL(18,0)
+
+	AS
+
+	/*
+	Documentação
+	Arquivo Fonte.....: Conta.sql
+	Objetivo..........: Realiza a operação de estorno em uma operação.
+	Autor.............: Alysson Estevam
+ 	Data..............: 24/01/2020
+	Ex................: EXEC [dbo].[UpdEstorno] '15', 'D', '1000', '2050'
+	*/
+
+	BEGIN
+		DECLARE @Vlr_TempSaldoAtual MONEY;
+		SELECT @Vlr_TempSaldoAtual = Vlr_Saldo 
+			FROM [dbo].[Contas] WITH (NOLOCK) 
+			WHERE Num_NumeroConta = @Num_NumeroConta;
+
+		IF(@Ind_TipoMovimento = 'C')
+			SET @Vlr_TempSaldoAtual = @Vlr_TempSaldoAtual - @Vlr_Valor;
+		ELSE IF(@Ind_TipoMovimento = 'D')
+			SET @Vlr_TempSaldoAtual = @Vlr_TempSaldoAtual + @Vlr_Valor;
+
+		UPDATE [dbo].[Contas]
+		SET Vlr_Saldo = @Vlr_TempSaldoAtual
+		WHERE Num_NumeroConta = @Num_NumeroConta;
+
+		DELETE FROM [dbo].[Operacoes]
+		WHERE Num_Codigo = @Num_Codigo;
+
+		RETURN 0;
 	END
 GO

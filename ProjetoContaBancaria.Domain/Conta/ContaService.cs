@@ -32,9 +32,9 @@ namespace ProjetoContaBancaria.Domain.Conta
             _repository.Put(conta);
         }
 
-        public void Deposito(decimal Num_NumeroConta, decimal Vlr_Valor)
+        public void Deposito(OperacoesContaDto operacoesConta)
         {
-            int valorRetorno = _repository.Deposito(Num_NumeroConta, Vlr_Valor);
+            int valorRetorno = _repository.Deposito(operacoesConta);
 
             if (valorRetorno == 1)
             {
@@ -45,9 +45,9 @@ namespace ProjetoContaBancaria.Domain.Conta
             }
         }
 
-        public void Saque(decimal Num_NumeroConta, decimal Vlr_Valor)
+        public void Saque(OperacoesContaDto operacoesConta)
         {
-            int valorRetorno = _repository.Saque(Num_NumeroConta, Vlr_Valor);
+            int valorRetorno = _repository.Saque(operacoesConta);
 
             if (valorRetorno == 1)
             {
@@ -63,9 +63,9 @@ namespace ProjetoContaBancaria.Domain.Conta
             }
         }
 
-        public void Transferencia(decimal Num_NumeroContaT, decimal Num_NumeroContaR, decimal Vlr_Valor)
+        public void Transferencia(OperacoesContaDto operacoesConta)
         {
-            int valorRetorno = _repository.Transferencia(Num_NumeroContaT, Num_NumeroContaR, Vlr_Valor);
+            int valorRetorno = _repository.Transferencia(operacoesConta);
 
             if (valorRetorno == 1)
             {

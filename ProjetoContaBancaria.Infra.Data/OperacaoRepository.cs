@@ -1,13 +1,10 @@
-﻿using System;
+﻿using ProjetoContaBancaria.Domain.Operacao;
+using ProjetoContaBancaria.Domain.Operacao.Dto;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ProjetoContaBancaria.Domain.Conta.Dto;
-using ProjetoContaBancaria.Domain.Operacao;
-using ProjetoContaBancaria.Domain.Operacao.Dto;
 
 namespace ProjetoContaBancaria.Infra.Data
 {
@@ -18,7 +15,9 @@ namespace ProjetoContaBancaria.Infra.Data
         private enum Procedures
         {
             SelOperacao,
-            SelPorContaOperacao
+            SelPorIdOperacao,
+            SelPorContaOperacao,
+            UpdEstorno
         }
 
         public IEnumerable<OperacaoDto> Get()
@@ -44,6 +43,18 @@ namespace ProjetoContaBancaria.Infra.Data
             }
         }
 
+        public OperacaoDto GetByIdOperacao(string id)
+        {
+            using (_contexto = new Contexto())
+            {
+                SqlCommand cmd = new SqlCommand(Procedures.SelPorIdOperacao.ToString(), _contexto.ConexaoBD);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Num_Codigo", id);
+
+                return ReaderToList(cmd.ExecuteReader()).FirstOrDefault();
+            }
+        }
+
         private List<OperacaoDto> ReaderToList(SqlDataReader reader)
         {
             List<OperacaoDto> operacoes = new List<OperacaoDto>();
@@ -63,6 +74,23 @@ namespace ProjetoContaBancaria.Infra.Data
             }
             reader.Close();
             return operacoes;
+        }
+
+        public int Estorno(OperacaoDto operacao)
+        {
+            using (_contexto = new Contexto())
+            {
+                SqlCommand cmd = new SqlCommand(Procedures.UpdEstorno.ToString(), _contexto.ConexaoBD);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Num_Codigo", operacao.Num_Codigo);
+                cmd.Parameters.AddWithValue("@Ind_TipoMovimento", operacao.Ind_TipoMovimento);
+                cmd.Parameters.AddWithValue("@Vlr_Valor", operacao.Vlr_Valor);
+                cmd.Parameters.AddWithValue("@Num_NumeroConta", operacao.Num_NumeroConta);
+                cmd.Parameters.Add("@Num_Retorno", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
+                cmd.ExecuteNonQuery();
+
+                return int.Parse(cmd.Parameters["@Num_Retorno"].Value.ToString());
+            }
         }
     }
 }
