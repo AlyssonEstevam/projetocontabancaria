@@ -56,8 +56,8 @@ namespace ProjetoContaBancaria.Web.Controllers
             _response = _operacaoApplication.Estorno(operacao);
             if (_response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                //Tela de Estorno realizado com sucesso!
-                return RedirectToAction("Index");
+                ViewBag.Mensagem = "Estorno realizado com sucesso!";
+                return View("Confirmacao");
             }
             else
             {

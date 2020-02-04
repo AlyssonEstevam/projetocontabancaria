@@ -246,6 +246,9 @@
     <Content Include="Views\Pessoa\Saque.cshtml" />
     <Content Include="Views\Pessoa\Transferencia.cshtml" />
     <Content Include="Views\Pessoa\Deposito.cshtml" />
+    <Content Include="Views\Conta\Confirmacao.cshtml" />
+    <Content Include="Views\Operacao\Confirmacao.cshtml" />
+    <Content Include="Views\Pessoa\Confirmacao.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

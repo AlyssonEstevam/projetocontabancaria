@@ -61,8 +61,8 @@ namespace ProjetoContaBancaria.Web.Controllers
                 _response = _contaApplication.Saque(operacoesConta);
                 if (_response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    //Tela de Saque realizado com sucesso!
-                    return RedirectToAction("Index");
+                    ViewBag.Mensagem = "Saque realizado com sucesso!";
+                    return View("Confirmacao");
                 }
             }
 
@@ -85,8 +85,8 @@ namespace ProjetoContaBancaria.Web.Controllers
                 _response = _contaApplication.Deposito(operacoesConta);
                 if (_response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    //Tela de Depósito realizado com sucesso!
-                    return RedirectToAction("Index");
+                    ViewBag.Mensagem = "Depósito realizado com sucesso!";
+                    return View("Confirmacao");
                 }
             }
 
@@ -109,8 +109,8 @@ namespace ProjetoContaBancaria.Web.Controllers
                 _response = _contaApplication.Transferencia(operacoesConta);
                 if (_response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    //Tela de Transferencia realizada com sucesso!
-                    return RedirectToAction("Index");
+                    ViewBag.Mensagem = "Transferência realizada com sucesso!";
+                    return View("Confirmacao");
                 }
             }
 
@@ -146,8 +146,8 @@ namespace ProjetoContaBancaria.Web.Controllers
                 _response = _pessoaApplication.Post(pessoa);
                 if (_response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    //Tela de Pessoa cadastrada com sucesso!
-                    return RedirectToAction("Index");
+                    ViewBag.Mensagem = "Pessoa cadastrada com sucesso!";
+                    return View("Confirmacao");
                 }
             }
 
@@ -173,8 +173,8 @@ namespace ProjetoContaBancaria.Web.Controllers
                 _response = _pessoaApplication.Put(pessoa);
                 if (_response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    //Tela de Pessoa alterada com sucesso!
-                    return RedirectToAction("Index");
+                    ViewBag.Mensagem = "Pessoa alterada com sucesso!";
+                    return View("Confirmacao");
                 }
             }
 
@@ -195,8 +195,8 @@ namespace ProjetoContaBancaria.Web.Controllers
             _response = _pessoaApplication.Delete(id);
             if (_response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                //Tela de Pessoa removida com sucesso!
-                return RedirectToAction("Index");
+                ViewBag.Mensagem = "Pessoa removida com sucesso!";
+                return View("Confirmacao");
             }
             else
             {
